@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <title>Classic Tetris</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div id="container" class="mainScreen">
+    <div class="board-game">
+        <div class="board">
+            <div class="field"></div>
+            <div class="winker"></div>
+            <div id="ghost"></div>
+            <div id="block"></div>
+        </div>
+    </div>
+</div>
+<div class="tetrisShape">
+    <div id="i">
+        <div class="r1" data-top="0" data-left="2"></div>
+        <div class="r3" data-top="0" data-left="1"></div>
+
+        <div class="r0" data-top="1" data-left="0"></div>
+        <div class="r0 r3" data-top="1" data-left="1"></div>
+        <div class="r0 r1" data-top="1" data-left="2"></div>
+        <div class="r0" data-top="1" data-left="3"></div>
+
+        <div class="r2" data-top="2" data-left="0"></div>
+        <div class="r2 r3" data-top="2" data-left="1"></div>
+        <div class="r1 r2" data-top="2" data-left="2"></div>
+        <div class="r2" data-top="2" data-left="3"></div>
+
+        <div class="r1" data-top="3" data-left="2"></div>
+        <div class="r3" data-top="3" data-left="1"></div>
+    </div>
+
+    <div id="j">
+        <div class="r0" data-top="0" data-left="0"></div>
+        <div class="r1 r3" data-top="0" data-left="1"></div>
+        <div class="r1" data-top="0" data-left="2"></div>
+
+        <div class="r0 r2" data-top="1" data-left="0"></div>
+        <div class="r0 r1 r2 r3" data-top="1" data-left="1"></div>
+        <div class="r0 r2" data-top="1" data-left="2"></div>
+
+        <div class="r3" data-top="2" data-left="0"></div>
+        <div class="r1 r3" data-top="2" data-left="1"></div>
+        <div class="r2" data-top="2" data-left="2"></div>
+    </div>
+
+    <div id="l">
+        <div class="r3" data-top="0" data-left="0"></div>
+        <div class="r1 r3" data-top="0" data-left="1"></div>
+        <div class="r0" data-top="0" data-left="2"></div>
+
+        <div class="r0 r2" data-top="1" data-left="0"></div>
+        <div class="r0 r1 r2 r3" data-top="1" data-left="1"></div>
+        <div class="r0 r2" data-top="1" data-left="2"></div>
+
+        <div class="r2" data-top="2" data-left="0"></div>
+        <div class="r1 r3" data-top="2" data-left="1"></div>
+        <div class="r1" data-top="2" data-left="2"></div>
+    </div>
+    <div id="o">
+        <div class="r0 r1 r2 r3" data-top="0" data-left="1"></div>
+        <div class="r0 r1 r2 r3" data-top="0" data-left="2"></div>
+
+        <div class="r0 r1 r2 r3" data-top="1" data-left="1"></div>
+        <div class="r0 r1 r2 r3" data-top="1" data-left="2"></div>
+    </div>
+
+    <div id="s">
+        <div class="r3" data-top="0" data-left="0"></div>
+        <div class="r0 r1" data-top="0" data-left="1"></div>
+        <div class="r0" data-top="0" data-left="2"></div>
+
+        <div class="r0 r3" data-top="1" data-left="0"></div>
+        <div class="r0 r1 r2 r3" data-top="1" data-left="1"></div>
+        <div class="r1 r2" data-top="1" data-left="2"></div>
+
+        <div class="r2" data-top="2" data-left="0"></div>
+        <div class="r2 r3" data-top="2" data-left="1"></div>
+        <div class="r1" data-top="2" data-left="2"></div>
+    </div>
+
+    <div id="t">
+        <div class="r0 r1 r3" data-top="0" data-left="1"></div>
+
+        <div class="r0 r2 r3" data-top="1" data-left="0"></div>
+        <div class="r0 r1 r2 r3" data-top="1" data-left="1"></div>
+        <div class="r0 r1 r2" data-top="1" data-left="2"></div>
+
+        <div class="r1 r2 r3" data-top="2" data-left="1"></div>
+    </div>
+
+    <div id="z">
+        <div class="r0" data-top="0" data-left="0"></div>
+        <div class="r0 r3" data-top="0" data-left="1"></div>
+        <div class="r1" data-top="0" data-left="2"></div>
+
+        <div class="r2 r3" data-top="1" data-left="0"></div>
+        <div class="r0 r1 r2 r3" data-top="1" data-left="1"></div>
+        <div class="r0 r1" data-top="1" data-left="2"></div>
+
+        <div class="r3" data-top="2" data-left="0"></div>
+        <div class="r1 r2" data-top="2" data-left="1"></div>
+        <div class="r2" data-top="2" data-left="2"></div>
+    </div>
+</div>
+</body>
+<script src="js/Board.js"></script>
+<script src="js/Score.js"></script>
+<script src="js/Storage.js"></script>
+<script src="js/Tetrimino.js"></script>
+<script src="js/Tetris.js"></script>
+<script src="js/TetrisShape.js"></script>
+</html>

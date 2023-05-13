@@ -1,0 +1,200 @@
+/*Font chữ*/
+* {
+    font-family: "Agency FB";
+}
+
+/**
+ *Màn hình chính
+ */
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: transparent;
+    font-size: 15px;
+}
+
+html, body, input {
+    color: #CD853F;
+    font-weight: bold;
+}
+
+a {
+    position: relative;
+    color: #CD853F;
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover {
+    color: black;
+}
+
+a:before {
+    content: "";
+    position: absolute;
+    top: 0.64em;
+    left: -0.64em;
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: 0.08em;
+    background-color: #CD853F;
+}
+
+a:hover:before {
+    background-color: black;
+}
+
+
+/*Css cho game*/
+#container {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 50%;
+    right: 50%;
+    width: 31.6em;
+    height: 41.6em;
+    margin-top: -20.8em;
+    margin-left: -15.8em;
+}
+
+.board-game {
+    position: absolute;
+    top: 0.2em;
+    left: 0.2em;
+    right: 10.2em;
+    bottom: 0.2em;
+    border: 0.6em solid #CD853F;
+    box-shadow: 0 0 0 0.2em #121212;
+    background: linear-gradient(135deg, #FFE4B5 50%, #FFEFD5 50%, #FFEFD5 50%, #FFE4B5 50%, #FFE4B5 50%, #FFEFD5 75%);
+    background-size: 30px 30px;
+}
+
+/*css cho ẩn đi viên gạch random lúc rơi từ trên xuống*/
+@keyframes wink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    50.1% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.board {
+    display: none;
+    position: absolute;
+    top: -0.1em;
+    left: -0.1em;
+    bottom: -0.1em;
+    right: -0.1em;
+    overflow: hidden;
+}
+
+.winker, .field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.winker div {
+    display: none;
+    position: absolute;
+    left: -0.2em;
+    right: 0;
+    height: 1.8em;
+    background-image: linear-gradient(to left, rgba(250, 250, 250, 0.8) 1.8em, black 1.8em);
+    background-size: 2em 2em;
+    border: 0.2em solid black;
+}
+
+.winker .wink {
+    display: block;
+    animation: wink 150ms 3 linear;
+}
+
+/*tạo bóng cho viên gạch đang rơi*/
+#block, #ghost {
+    position: absolute;
+}
+/*css cho các khối gạch*/
+.field div,
+#block div,
+#ghost div,
+#next div {
+    position: absolute;
+    width: 2.2em;
+    height: 2.2em;
+}
+
+/* I */
+.block0 div, .cell0 {
+    box-shadow: inset 0 0 0 0.2em black, inset 0.4em -0.4em #CC6602, inset -0.4em 0.4em #FF9935;
+    background-color: #FF6301;
+}
+
+/* J */
+.block1 div, .cell1 {
+    box-shadow: inset 0 0 0 0.2em black, inset 0.4em -0.4em #9900CD, inset -0.4em 0.4em #CD66FF;
+    background-color: #CC00FF;
+}
+
+/* L */
+.block2 div, .cell2 {
+    box-shadow: inset 0 0 0 0.2em black, inset 0.4em -0.4em #0000CC, inset -0.4em 0.4em #6367FE;
+    background-color: #0000FE;
+}
+/* O */
+.block3 div, .cell3 {
+    box-shadow: inset 0 0 0 0.2em black, inset 0.4em -0.4em #CC0001, inset -0.4em 0.4em #FF6666;
+    background-color: #FE0000;
+}
+
+/* S */
+.block4 div, .cell4 {
+    box-shadow: inset 0 0 0 0.2em black, inset 0.4em -0.4em #3499C7, inset -0.4em 0.4em #99FFFF;
+    background-color: #64CDFA;
+}
+
+/* Z */
+.block6 div, .cell6 {
+    box-shadow: inset 0 0 0 0.2em black, inset 0.4em -0.4em #01CC00, inset -0.4em 0.4em #66FF66;
+    background-color: #00FF00;
+}
+
+/* T */
+.block5 div, .cell5 {
+    box-shadow: inset 0 0 0 0.2em black, inset 0.4em -0.4em #FCCE00, inset -0.4em 0.4em #FEFF99;
+    background-color: #FFFD04;
+}
+
+#ghost div {
+    box-shadow: inset 0 0 0 0.2em black, inset 0.4em -0.4em #464646, inset -0.4em 0.4em #666 !important;
+    background-color: #505050 !important;
+}
+
+
+.r0, .r1, .r2, .r3 {
+    display: none;
+}
+
+.rot0 .r0, .rot1 .r1,
+.rot2 .r2, .rot3 .r3 {
+    display: block;
+}
+
+.tetrisShape {
+    display: none;
+}
