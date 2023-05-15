@@ -263,4 +263,90 @@ class Display {
     window.addEventListener("load", main, false);
 }
 ());
+/*Xử lí phần âm thanh trong trò chơi*/
+const Sounds = (function () {
+    /*Trả về true nếu trình duyệt hỗ trợ Audio*/
+    function supportsAudio() {
+        return !!document.createElement("audio").canPlayType;
+    }
+
+    /*Trả về true nếu trình duyệt hỗ trợ MP3 Audio*/
+    function supportsMP3() {
+        var a = document.createElement("audio");
+        return !!(a.canPlayType && a.canPlayType("audio/mpeg;").replace(/no/, ""));
+    }
+
+    /*Trả về true nếu trình duyệt hỗ trợ OGG Audio*/
+    function supportsOGG() {
+        var a = document.createElement("audio");
+        return !!(a.canPlayType && a.canPlayType("audio/ogg; codecs='vorbis'").replace(/no/, ""));
+    }
+
+
+    function Sounds(soundFiles, storageName, usesElement) {
+        this.data = new Storage(storageName, true);
+        this.format = supportsOGG() ? ".ogg" : (supportsMP3() ? ".mp3" : null);
+        this.mute = !!this.data.get();
+        this.old = this.mute;
+
+        if (usesElement) {
+            this.audio = document.querySelector(".audio");
+            this.waves = document.querySelector(".waves");
+        }
+
+        if (this.format) {
+            this.setSounds(soundFiles);
+            this.setDisplay();
+        } else if (this.audio) {
+            this.audio.style.display = "none";
+        }
+    }
+
+    /*Tạo tất cả các chức năng âm thanh*/
+    Sounds.prototype.setSounds = function (soundFiles) {
+        var audio, self = this;
+
+        soundFiles.forEach(function (sound) {
+            self[sound] = function () {
+                audio = new Audio("audio/" + sound + self.format);
+                if (self.format && !self.mute) {
+                    audio.play();
+                }
+            };
+        });
+    };
+
+    /*Tắt/Bật âm thanh*/
+    Sounds.prototype.toggle = function (mute) {
+        this.mute = mute !== undefined ? mute : !this.mute;
+        this.setDisplay();
+        this.data.set(this.mute ? 1 : 0);
+    };
+
+    /*hàm được sử dụng để tắt âm thanh trong một thời gian ngắn*/
+    Sounds.prototype.startMute = function () {
+        this.old = this.mute;
+        this.toggle(true);
+    };
+
+    /*Đặt lại âm thanh về lúc ban đầu*/
+    Sounds.prototype.endMute = function () {
+        this.toggle(this.old);
+    };
+
+    /*Trả về true nếu âm thanh tắt và false nếu bật */
+    Sounds.prototype.isMute = function () {
+        return this.mute;
+    };
+
+    /*Đặt hiển thị âm thanh waves(Khi tắt tiếng sẽ mất waves và ngược lại)*/
+    Sounds.prototype.setDisplay = function () {
+        if (this.waves) {
+            this.waves.style.display = this.mute ? "none" : "block";
+        }
+    };
+
+
+    return Sounds;
+}());
 
