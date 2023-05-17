@@ -58,6 +58,56 @@ class Display {
         return this.display === "paused";
     }
 }
+/*Xử lí cấp độ*/
+class Level {
+
+    constructor(maxLevels) {
+        this.levelerElem = document.querySelector(".leveler");
+        this.maxLevels = maxLevels;
+        this.level = 1;
+        this.score = 0;
+    }
+
+    /*Lấy ra cấp độ ban đầu*/
+    get() {
+        return this.level;
+        this.intervalId = setInterval(() => {
+            this.update();
+        }, 500);
+    }
+
+    /*tăng cấp độ*/
+    inc() {
+        Utils.unselect();
+        if (this.level < this.maxLevels) {
+            this.level += 1;
+            this.show();
+        }
+    }
+
+    /*Giảm cấp độ*/
+    dec() {
+        Utils.unselect();
+        if (this.level > 1) {
+            this.level -= 1;
+            this.show();
+        }
+    }
+
+    /*Điều chỉnh cấp độ*/
+    choose(level) {
+        if (level > 0 && level <= this.maxInitialLevel) {
+            this.level = level;
+            this.show();
+        }
+    }
+
+
+    /*Hiển thị cấp độ được chọn*/
+    show() {
+        this.levelerElem.innerHTML = this.level;
+    }
+}
 //Các hàm xử lí các sự kiện chính trong game
 (function () {
     "use strict";
