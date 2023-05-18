@@ -198,3 +198,210 @@ a:hover:before {
 .tetrisShape {
     display: none;
 }
+
+/*css cho phần game over*/
+.input {
+    display: none;
+    position: absolute;
+    top: 6em;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-size: 2em;
+}
+
+.input p {
+    margin: 0;
+    padding-left: 1.5em;
+    text-align: left;
+}
+
+.input input {
+    margin: 0.2em 1em 0 0;
+    padding-left: 0.2em;
+    width: 4.5em;
+    background-color: #FAF0E6;
+    border: 0.16em solid #CD853F;
+    font-size: 1em;
+}
+
+.input input:focus {
+    outline: none;
+}
+
+.restart {
+    position: absolute;
+    top: 4em;
+    left: 2.5em;
+}
+
+
+/*css cho phần điểm cao*/
+.high {
+    display: none;
+}
+
+.scores {
+    position: absolute;
+    top: 7.3em;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 1.7em;
+}
+
+.scores .titles,
+.scores .scores,
+.help .titles,
+.help .scores {
+    float: left;
+    clear: both;
+}
+
+.scores .titles {
+    color: black;
+}
+
+.scores .left,
+.scores .right,
+.help .left,
+.help .right {
+    float: left;
+    width: 5.2em;
+}
+
+.scores .left, .help .left {
+    text-align: right;
+}
+
+.scores .right, .help .right {
+    text-align: left;
+}
+
+.scores .middle, .help .middle {
+    float: left;
+    width: 1.3em;
+    text-align: center;
+}
+
+.none {
+    display: none;
+    position: absolute;
+    top: 8em;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: black;
+    font-size: 2.5em;
+}
+
+.high .restore {
+    position: absolute;
+    left: 1em;
+    bottom: 0.2em;
+    font-size: 2em;
+}
+
+.high .back {
+    position: absolute;
+    right: 0.5em;
+    bottom: 0.2em;
+    font-size: 2em;
+}
+/*css cho phần hướng dẫn*/
+.controls {
+    display: none;
+    position: absolute;
+    top: 13em;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.controls div,
+.controls p {
+    color: black;
+    font-weight: normal;
+    font-size: 1.7em;
+    line-height: 1.1em;
+}
+
+.controls p {
+    float: left;
+    clear: both;
+    margin: 0.5em 1em 0 1em;
+}
+
+.controls .back {
+    position: absolute;
+    right: 1em;
+    bottom: 0.2em;
+    font-size: 2em;
+}
+
+
+/*css cho class side: phần hiển thị bên tay phải gồm: ô gạch tiếp theo, cấp độ, điểm số và dòng*/
+.next, .level, .score, .lines {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2.7em;
+    font-size: 2em;
+}
+
+.next {
+    top: 1em;
+    height: 4.5em;
+}
+
+.level {
+    top: 5.8em;
+}
+
+.score {
+    top: 8.7em;
+}
+
+.lines {
+    top: 11.6em;
+}
+
+.content {
+    position: absolute;
+    top: 0.9em;
+    left: 0;
+    right: 0.08em;
+    bottom: 0.08em;
+    padding-right: 0.2em;
+    background-color: #FAF0E6;
+    border: 0.16em solid #CD853F;
+    border-left: none;
+    text-align: right;
+    box-shadow: 0.08em 0 #121212, 0 -0.08em #121212, 0 0.08em #121212, 0.08em 0.08em #121212, 0.08em -0.08em #121212;
+}
+
+.title {
+    position: absolute;
+    top: 0;
+    left: 0.5em;
+    color: #CD853F;
+    line-height: 1em;
+}
+
+#next {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 0.4em;
+}
+
+.pauser {
+    display: block;
+    position: absolute;
+    top: 18.5em;
+    left: 3em;
+    font-size: 2em;

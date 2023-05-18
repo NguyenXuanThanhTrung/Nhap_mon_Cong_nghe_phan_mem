@@ -8,20 +8,118 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-
-
 </head>
 <body>
 <div id="container" class="mainScreen">
+
     <div class="board-game">
         <div class="board">
             <div class="field"></div>
             <div class="winker"></div>
             <div id="ghost"></div>
             <div id="block"></div>
+        </div>  <!--Trung-->
+        <!--Quý-->
+        <div class="messages">
+            <div class="text">
+                <h2>Tetris</h2>
+                <p>Mời bạn chọn cấp độ!!!</p>
+            </div>
+
+            <div class="levels">
+                Cấp độ:<br/>
+                <div class="left" data-action="decrease"></div>
+                <span class="leveler">1</span>
+                <div class="right" data-action="increase"></div>
+                <ul>
+                    <li><a href="#" data-action="start">Bắt đầu</a></li>
+                    <li><a href="#" data-action="highScores">Điểm cao</a></li>
+                    <li><a href="#" data-action="help">Hướng dẫn</a></li>
+                </ul>
+            </div>
+
+            <ul class="pause">
+                <li><a href="#" data-action="endPause">Tiếp tục</a></li>
+                <li><a href="#" data-action="finishGame">Trò chơi mới</a></li>
+            </ul>
+            <div class="input">
+                <p>Mời nhập tên:</p>
+                <input type="text"/>
+                <a href="#" data-action="save">Đồng ý</a>
+                <a class="restart" href="#" data-action="mainScreen">Game mới</a>
+            </div>
+
+            <div class="high">
+                <div class="scores"></div>
+                <div class="none">Không có điểm nào!!!</div>
+                <a class="restore" href="#" data-action="restore">Khôi phục</a>
+                <a class="back" href="#" data-action="mainScreen">Trở về</a>
+            </div>
+
+            <div class="controls">
+                <div class="left">
+                    <b>Mũi tên trái</b><br/>
+                    <b>Mũi tên phải</b><br/>
+                    <b>Mũi tên xuống</b><br/>
+                    <b>X</b> &<b>lên</b><br/>
+                    <b>Z</b><br/>
+                    <b>Ctrl</b>&<b>Space</b><br/>
+                    <b>P</b><br/>
+                    <b>M</b><br/>
+                    <b>Enter</b>
+                </div>
+                <div class="middle">
+                    - <br/> - <br/> - <br/> - <br/> - <br/>
+                    - <br/> - <br/> - <br/> -
+                </div>
+                <div class="right">
+                    Di chuyển trái<br/>
+                    Di chuyển phải<br/>
+                    Đi Xuống<br/>
+                    Xoay phải<br/>
+                    Xoay trái<br/>
+                    Rơi nhanh<br/>
+                    Tạm dừng<br/>
+                    Bật/Tắt âm thanh<br/>
+                    Bắt đầu chơi!!!
+                </div>
+                <a class="back" href="#" data-action="mainScreen">Trở về</a>
+            </div>
         </div>
     </div>
+    <div class="side">
+        <div class="next">
+            <div class="content">
+                <div id="next"></div>
+            </div>
+            <div class="title">Tiếp theo</div>
+        </div>
+        <div class="level">
+            <div class="content">1</div>
+            <div class="title">Cấp độ</div>
+        </div>
+        <div class="score">
+            <div class="content">0</div>
+            <div class="title">Điểm số</div>
+        </div>
+        <div class="lines">
+            <div class="content">0</div>
+            <div class="title">Dòng</div>
+        </div>
+        <div class="audio" data-action="sound">
+            <div class="waves">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="triangle"></div>
+            <div class="box"></div>
+        </div>
+        <a class="pauser" href="#" data-action="pause">Tạm dừng</a>
+    </div>
 </div>
+
 <div class="tetrisShape">
     <div id="i">
         <div class="r1" data-top="0" data-left="2"></div>
@@ -115,9 +213,11 @@
     </div>
 </div>
 </body>
-<script src="js/Tetris.js"></script>
-<script src="js/Storage.js"></script>
 <script src="js/Board.js"></script>
+<script src="js/Score.js"></script>
+<script src="js/Storage.js"></script>
+<script src="js/Tetris.js"></script>
 <script src="js/TetrisShape.js"></script>
 <script src="js/Tetrimino.js"></script>
+
 </html>
