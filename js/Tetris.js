@@ -108,6 +108,113 @@ class Level {
         this.levelerElem.innerHTML = this.level;
     }
 }
+/*Xử lí sự kiện bàn phím*/
+class Keyboard {
+
+    constructor(display, scores, shortcuts) {
+        this.fastKeys = [70, 70, 70, 70, 70, 70];
+        this.shortcuts = shortcuts;
+        this.keyPressed = null;
+        this.count = 0;
+
+        this.display = display;
+        this.scores = scores;
+
+        document.addEventListener("keydown", (e) => this.onKeyDown(e));
+        document.addEventListener("keyup", (e) => this.onKeyUp(e));
+    }
+
+
+    /*Khi giữ phím di chuyển thì khối gạch sẽ di chuyển theo ý người chơi*/
+    holdingKey() {
+        if (this.keyPressed) {
+            this.count += 1;
+            if (this.count > 8) {
+                this.onKeyHold();
+                this.count -= 3;
+            }
+        }
+    }
+
+    /*Đặt lại mọi thứ*/
+    reset() {
+        this.count = 0;
+    }
+
+
+    /*sự kiện nhấn phím*/
+    pressKey(key, event) {
+        let number = null;
+        if (this.scores.isFocused()) {
+            if (key === 13) {
+                this.shortcuts.gameOver.O();
+            }
+        } else {
+            if (!this.display.isPlaying()) {
+                event.preventDefault();
+            }
+
+            if ([8, 66, 78].indexOf(key) > -1) {            // Backspace / B / N
+                key = "B";
+            } else if ([13, 79, 84].indexOf(key) > -1) {    // Enter / O / T
+                key = "O";
+            } else if ([80, 67].indexOf(key) > -1) {        // P / C
+                key = "P";
+            } else if ([17, 32].indexOf(key) > -1) {        // Ctrl / Space
+                key = "C";
+            } else if ([38, 87].indexOf(key) > -1) {        // Up    / W
+                key = "W";
+            } else if ([37, 65].indexOf(key) > -1) {        // Left  / A
+                key = "A";
+            } else if ([40, 83].indexOf(key) > -1) {        // Down  / S
+                key = "S";
+            } else if ([39, 68].indexOf(key) > -1) {        // Right / D
+                key = "D";
+            } else {
+                if (key === 48 || key === 96) {
+                    number = 10;
+                } else if (key > 48 && key < 58) {
+                    number = key - 48;
+                } else if (key > 96 && key < 106) {
+                    number = key - 96;
+                }
+                key = String.fromCharCode(key);
+            }
+
+            if (number !== null) {
+                this.shortcuts.number(number);
+            }
+            if (this.shortcuts[this.display.get()][key]) {
+                this.shortcuts[this.display.get()][key]();
+            }
+        }
+    }
+
+    /*Xử lí sự kiện bàn phím cho nút xuống*/
+    onKeyDown(event) {
+        if (this.display.isPlaying() && this.fastKeys.indexOf(event.keyCode) > -1) {
+            if (this.keyPressed === null) {
+                this.keyPressed = event.keyCode;
+            } else {
+                return;
+            }
+        }
+        this.pressKey(event.keyCode, event);
+    }
+
+    /*Xử lí sự kiện bàn phím cho nút lên*/
+    onKeyUp() {
+        this.keyPressed = null;
+        this.count = 0;
+    }
+
+    // Khi một phím được nhấn, phím này được gọi trên mỗi khung để di chuyển phím nhanh
+    onKeyHold() {
+        if (this.keyPressed !== null && this.display.isPlaying()) {
+            this.pressKey(this.keyPressed);
+        }
+    }
+}
 //Các hàm xử lí các sự kiện chính trong game
 (function () {
     "use strict";
