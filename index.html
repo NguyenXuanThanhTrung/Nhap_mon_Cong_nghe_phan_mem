@@ -3,15 +3,16 @@
 <head>
     <meta charset="utf-8"/>
     <title>Classic Tetris</title>
-    <link rel="stylesheet" href="css/style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 <div id="container" class="mainScreen">
-
+    <!--Trung-->
     <div class="board-game">
         <div class="board">
             <div class="field"></div>
@@ -117,9 +118,9 @@
             <div class="box"></div>
         </div>
         <a class="pauser" href="#" data-action="pause">Tạm dừng</a>
-    </div>
+    </div>  <!--Quý-->
 </div>
-
+<!--Trung-->
 <div class="tetrisShape">
     <div id="i">
         <div class="r1" data-top="0" data-left="2"></div>
@@ -211,13 +212,12 @@
         <div class="r1 r2" data-top="2" data-left="1"></div>
         <div class="r2" data-top="2" data-left="2"></div>
     </div>
-</div>
+</div> <!--Trung-->
 </body>
 <script src="js/Board.js"></script>
 <script src="js/Score.js"></script>
 <script src="js/Storage.js"></script>
+<script src="js/Tetrimino.js"></script>
 <script src="js/Tetris.js"></script>
 <script src="js/TetrisShape.js"></script>
-<script src="js/Tetrimino.js"></script>
-
 </html>

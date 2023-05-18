@@ -73,8 +73,245 @@ a:hover:before {
     box-shadow: 0 0 0 0.2em #121212;
     background: linear-gradient(135deg, #FFE4B5 50%, #FFEFD5 50%, #FFEFD5 50%, #FFE4B5 50%, #FFE4B5 50%, #FFEFD5 75%);
     background-size: 30px 30px;
+} /*Trung*/
+
+/*Quý*/
+.side {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10.2em;
+    bottom: 0;
 }
 
+
+/*Hiện/Ẩn một số tính năng như:Điểm cao, hướng dẫn*/
+.playing .messages {
+    display: none;
+}
+
+.playing .pauser,
+.paused .pauser {
+    display: block;
+}
+
+.playing #next,
+.mainScreen #next,
+.playing .board,
+.mainScreen .board {
+    display: block;
+}
+
+.mainScreen .levels,
+.paused .pause,
+.gameOver .input,
+.highScores .high,
+.help .controls {
+    display: block;
+}
+
+/*css cho phần tiêu đề*/
+.messages {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.messages .text {
+    position: absolute;
+    top: 4em;
+    left: 0;
+    right: 0;
+    height: 8em;
+    background-color: black;
+    opacity: 0.8;
+}
+
+.messages .text h2 {
+    position: absolute;
+    top: 0.8em;
+    left: 0;
+    right: 0;
+    margin: 0;
+    font-size: 2.5em;
+    line-height: 1em;
+    text-align: center;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.messages .text p {
+    position: absolute;
+    top: 5em;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    line-height: 1.5em;
+}
+
+/*css cho phần chọn cấp độ*/
+.levels {
+    display: none;
+    position: absolute;
+    top: 10em;
+    left: 1.5em;
+    right: 1.5em;
+    height: 2.7em;
+    background-color: #FAF0E6;
+    border: 0.16em solid #CD853F;
+    text-align: center;
+    color: #CD853F;
+    font-size: 2em;
+}
+
+.levels .left,
+.levels .right {
+    position: absolute;
+    bottom: 1em;
+    width: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 1em;
+    cursor: pointer;
+    font-size: 0.4em;
+}
+
+.levels .left {
+    left: 0.5em;
+    border-right-color: #CD853F;
+}
+
+.levels .right {
+    right: 0.5em;
+    border-left-color: #CD853F;
+}
+
+.levels .left:hover {
+    border-right-color: black;
+}
+
+.levels .right:hover {
+    border-left-color: black;
+}
+
+
+.levels ul, .pause {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 1.2em;
+}
+
+.levels ul {
+    top: 3em;
+}
+
+.pause {
+    font-size: 2.5em;
+    display: none;
+    top: 8em;
+}
+
+.levels li,
+.pause li {
+    list-style-type: none;
+    padding: 0.08em;
+}
+
+/*css cho button loa*/
+.audio {
+    position: absolute;
+    top: 39em;
+    left: -0.5em;
+    cursor: pointer;
+}
+
+.audio .triangle {
+    position: absolute;
+    bottom: 0.2em;
+    left: 0.2em;
+    border: 1em solid transparent;
+    border-right-color: #CD853F;
+}
+
+.audio:hover .triangle {
+    border-right-color: black;
+}
+
+.audio .box {
+    position: absolute;
+    bottom: 0.9em;
+    left: 1.1em;
+    height: 0.6em;
+    width: 0.5em;
+    background-color: #CD853F;
+}
+
+.audio:hover .box {
+    background-color: black;
+}
+
+
+.waves {
+    position: absolute;
+    bottom: 0;
+    left: 2em;
+}
+
+.waves div {
+    position: absolute;
+    left: 0;
+    background-color: #CD853F;
+    border-radius: 0 20em 20em 0;
+}
+
+.waves div:nth-child(1) {
+    bottom: 0.3em;
+    width: 1.8em;
+    height: 1.8em;
+}
+
+.waves div:nth-child(2) {
+    bottom: 0.5em;
+    width: 1.4em;
+    height: 1.4em;
+}
+
+.waves div:nth-child(3) {
+    bottom: 0.7em;
+    width: 1.0em;
+    height: 1.0em;
+}
+
+.waves div:nth-child(4) {
+    bottom: 0.9em;
+    width: 0.6em;
+    height: 0.6em;
+}
+
+.audio:hover .waves div {
+    background-color: black;
+}
+
+.waves div:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0.1em;
+    top: 0;
+    background-color: #1F1F1F;
+    border-radius: 0 20em 20em 0;
+} /*Quý*/
+
+/*Trung*/
 /*css cho ẩn đi viên gạch random lúc rơi từ trên xuống*/
 @keyframes wink {
     0% {
@@ -197,8 +434,9 @@ a:hover:before {
 
 .tetrisShape {
     display: none;
-}
+}/*Trung*/
 
+/*Quý*/
 /*css cho phần game over*/
 .input {
     display: none;
@@ -405,3 +643,4 @@ a:hover:before {
     top: 18.5em;
     left: 3em;
     font-size: 2em;
+}
