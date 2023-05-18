@@ -116,3 +116,126 @@ class Score {
         return this.timeInterval;
     }
 }
+
+/*Xử lí phần điểm cao*/
+class HighScores {
+
+    constructor() {
+        this.input = document.querySelector(".input input");
+        this.scores = document.querySelector(".scores");
+        this.none = document.querySelector(".none");
+        this.data = new Storage("tetris.hs");
+        this.total = this.data.get("total") || 0;
+        this.focused = false;
+        this.maxScores = 9;
+
+        this.input.onfocus = () => this.focused = true;
+        this.input.onblur = () => this.focused = false;
+    }
+
+    /*Hiển thị điểm cao*/
+    show() {
+        this.scores.innerHTML = "";
+        this.showHideNone(this.total === 0);
+
+        if (this.total > 0) {
+            this.displayTitles();
+            this.displayScores();
+        }
+    }
+
+    /*Tạo tiêu đề và đặt nó vào html*/
+    displayTitles() {
+        let div = this.createContent("name", "lvl", "score");
+        div.className = "titles";
+        this.scores.appendChild(div);
+    }
+
+    /*Tạo từng dòng điểm và đặt nó vào html*/
+    displayScores() {
+        for (let i = 1; i <= this.total; i += 1) {
+            let data = this.data.get(i),
+                div = this.createContent(data.name, data.level, Utils.formatNumber(data.score, ","));
+
+            div.className = "highScore";
+            this.scores.appendChild(div);
+        }
+    }
+
+    /*Tạo nội dung cho từng điểm cao*/
+    createContent(name, level, score) {
+        let namer = "<div class='left'>" + name + " -</div>",
+            lvler = "<div class='middle'>" + level + "</div>",
+            screr = "<div class='right'>- " + score + "</div>",
+            element = document.createElement("DIV");
+
+        element.innerHTML = namer + lvler + screr;
+        return element;
+    }
+
+    /*Lưu điểm của người chơi*/
+    save(level, score) {
+        if (this.input.value) {
+            this.saveData(level, score);
+            return true;
+        }
+        return false;
+    }
+
+    /*Lấy điểm và thêm điểm mới vào đúng vị trí, cập nhật tổng điểm*/
+    saveData(level, score) {
+        let data = [],
+            saved = false,
+            actual = {
+                name: this.input.value,
+                level: level,
+                score: score
+            };
+
+        for (let i = 1; i <= this.total; i += 1) {
+            let hs = this.data.get(i);
+            if (!saved && hs.score < actual.score) {
+                data.push(actual);
+                saved = true;
+            }
+            if (data.length < this.maxScores) {
+                data.push(hs);
+            }
+        }
+        if (!saved && data.length < this.maxScores) {
+            data.push(actual);
+        }
+
+        this.data.set("total", data.length);
+        data.forEach((element, index) => {
+            this.data.set(index + 1, element);
+        });
+        this.total = data.length;
+    }
+
+    /*khôi phục điểm lại mặc định(không có điểm)*/
+    restore() {
+        for (let i = 1; i <= this.total; i += 1) {
+            this.data.remove(i);
+        }
+        this.data.set("total", 0);
+        this.show();
+    }
+
+
+    /*Hiển thị hoặc ẩn phần tử không có kết quả*/
+    showHideNone(show) {
+        this.none.style.display = show ? "block" : "none";
+    }
+
+    /*Đặt giá trị đầu vào và tập trung vào nó*/
+    setInput() {
+        this.input.value = "";
+        this.input.focus();
+    }
+
+    /*Trả về true nếu đầu vào là tiêu điểm*/
+    isFocused() {
+        return this.focused;
+    }
+}
