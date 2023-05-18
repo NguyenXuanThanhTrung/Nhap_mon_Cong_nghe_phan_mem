@@ -73,9 +73,8 @@ a:hover:before {
     box-shadow: 0 0 0 0.2em #121212;
     background: linear-gradient(135deg, #FFE4B5 50%, #FFEFD5 50%, #FFEFD5 50%, #FFE4B5 50%, #FFE4B5 50%, #FFEFD5 75%);
     background-size: 30px 30px;
-} /*Trung*/
+}
 
-/*Quý*/
 .side {
     position: absolute;
     top: 0;
@@ -309,9 +308,8 @@ a:hover:before {
     top: 0;
     background-color: #1F1F1F;
     border-radius: 0 20em 20em 0;
-} /*Quý*/
+}
 
-/*Trung*/
 /*css cho ẩn đi viên gạch random lúc rơi từ trên xuống*/
 @keyframes wink {
     0% {
@@ -434,9 +432,9 @@ a:hover:before {
 
 .tetrisShape {
     display: none;
-}/*Trung*/
+}
 
-/*Quý*/
+
 /*css cho phần game over*/
 .input {
     display: none;
